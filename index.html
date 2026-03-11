@@ -774,8 +774,12 @@ input[readonly] {
           <div style="display:flex;flex-direction:column;gap:14px;">
             <div class="form-group" style="margin-bottom:0">
               <label>JDC登録番号（リーダー）</label>
-              <input type="text" id="regLeader" maxlength="6" placeholder="例：123456" oninput="toHalf(this)" inputmode="numeric">
-              <div class="input-hint">未登録の場合は空欄のまま送信可</div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <input type="text" id="regLeaderP1" maxlength="1" placeholder="1" oninput="handleRegInput(this,'regLeaderP2')" inputmode="numeric" style="width:52px;text-align:center;font-weight:700;font-size:16px;">
+                <span style="font-weight:700;color:var(--gold);font-size:20px;line-height:1;">-</span>
+                <input type="text" id="regLeaderP2" maxlength="3" placeholder="234" oninput="handleRegInput(this,null)" inputmode="numeric" style="width:72px;text-align:center;font-weight:700;font-size:16px;">
+              </div>
+              <div class="input-hint">例：1-234　未登録の場合は空欄のまま送信可</div>
             </div>
             <div class="form-group" style="margin-bottom:0">
               <label>リーダー氏名（漢字）<span class="req">*</span></label>
@@ -793,8 +797,12 @@ input[readonly] {
           <div style="display:flex;flex-direction:column;gap:14px;">
             <div class="form-group" style="margin-bottom:0">
               <label>JDC登録番号（パートナー）</label>
-              <input type="text" id="regPartner" maxlength="6" placeholder="例：123456" oninput="toHalf(this)" inputmode="numeric">
-              <div class="input-hint">未登録の場合は空欄のまま送信可</div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <input type="text" id="regPartnerP1" maxlength="1" placeholder="1" oninput="handleRegInput(this,'regPartnerP2')" inputmode="numeric" style="width:52px;text-align:center;font-weight:700;font-size:16px;">
+                <span style="font-weight:700;color:var(--gold);font-size:20px;line-height:1;">-</span>
+                <input type="text" id="regPartnerP2" maxlength="3" placeholder="234" oninput="handleRegInput(this,null)" inputmode="numeric" style="width:72px;text-align:center;font-weight:700;font-size:16px;">
+              </div>
+              <div class="input-hint">例：1-234　未登録の場合は空欄のまま送信可</div>
             </div>
             <div class="form-group" style="margin-bottom:0">
               <label>パートナー氏名（漢字）<span class="req">*</span></label>
@@ -1089,6 +1097,25 @@ function toHalf(el) {
     .replace(/[^0-9]/g, '');
 }
 
+// 1桁-3桁 登録番号：半角変換＋自動フォーカス移動
+function handleRegInput(el, nextId) {
+  el.value = el.value
+    .replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
+    .replace(/[^0-9]/g, '');
+  if (nextId && el.value.length === parseInt(el.maxLength)) {
+    document.getElementById(nextId).focus();
+  }
+}
+
+// 登録番号を「1桁-3桁」形式の文字列に結合して返す
+function getRegNo(p1Id, p2Id) {
+  const p1 = document.getElementById(p1Id).value.trim();
+  const p2 = document.getElementById(p2Id).value.trim();
+  if (!p1 && !p2) return '未記入';
+  if (p1 && p2)   return p1 + '-' + p2;
+  return (p1 || '') + (p2 || '');
+}
+
 function formatZip(el) {
   el.value = el.value
     .replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
@@ -1228,8 +1255,8 @@ function goToConfirm() {
   }
 
   // populate confirm
-  const regL = document.getElementById('regLeader').value.trim() || '未記入';
-  const regP = document.getElementById('regPartner').value.trim() || '未記入';
+  const regL = getRegNo('regLeaderP1',  'regLeaderP2');
+  const regP = getRegNo('regPartnerP1', 'regPartnerP2');
   document.getElementById('cf-regLeader').textContent  = regL;
   document.getElementById('cf-regPartner').textContent = regP;
   document.getElementById('cf-leader').textContent   = document.getElementById('leaderKanji').value + '（' + document.getElementById('leaderKana').value + '）';
@@ -1277,8 +1304,8 @@ async function submitForm() {
   btn.innerHTML = '<span class="spinner"></span>送信中...';
   btn.disabled  = true;
 
-  const regLeader  = document.getElementById('regLeader').value.trim()  || '未記入';
-  const regPartner = document.getElementById('regPartner').value.trim() || '未記入';
+  const regLeader  = getRegNo('regLeaderP1',  'regLeaderP2');
+  const regPartner = getRegNo('regPartnerP1', 'regPartnerP2');
   const leaderKanji   = document.getElementById('leaderKanji').value;
   const leaderKana    = document.getElementById('leaderKana').value;
   const partnerKanji  = document.getElementById('partnerKanji').value;
