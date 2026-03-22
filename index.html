@@ -17,136 +17,60 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-
-/* ── ヘッダー ── */
-header{
-  background:linear-gradient(135deg,var(--deep-blue) 0%,var(--navy) 55%,var(--accent) 100%);
-  position:relative;overflow:hidden;padding:36px 20px 32px;text-align:center;color:#fff;
-}
-header::before{
-  content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.025) 20px,rgba(255,255,255,.025) 40px);
-}
-.hd-badge{
-  display:inline-block;background:rgba(201,168,76,.2);border:1px solid var(--gold);
-  color:var(--gold-light);font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;
-  letter-spacing:.08em;margin-bottom:12px;position:relative;
-}
+header{background:linear-gradient(135deg,var(--deep-blue) 0%,var(--navy) 55%,var(--accent) 100%);position:relative;overflow:hidden;padding:36px 20px 32px;text-align:center;color:#fff;}
+header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.025) 20px,rgba(255,255,255,.025) 40px);}
+.hd-badge{display:inline-block;background:rgba(201,168,76,.2);border:1px solid var(--gold);color:var(--gold-light);font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:.08em;margin-bottom:12px;position:relative;}
 .hd-title{font-family:'Playfair Display',serif;font-size:clamp(18px,4vw,28px);font-weight:700;letter-spacing:.04em;position:relative;line-height:1.3;}
 .hd-sub{font-size:13px;color:rgba(255,255,255,.75);margin-top:6px;position:relative;}
 .hd-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:18px;position:relative;}
-.hd-chip{
-  display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 14px;font-size:12px;
-}
+.hd-chip{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 14px;font-size:12px;}
 .hd-chip i{color:var(--gold-light);}
-.hd-deadline{
-  margin-top:16px;position:relative;
-  background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.4);
-  border-radius:8px;display:inline-block;padding:6px 20px;font-size:13px;
-  color:#fca5a5;font-weight:700;
-}
-
-/* ── ステップバー ── */
-.steps{display:flex;justify-content:center;align-items:center;gap:0;padding:24px 20px 0;max-width:500px;margin:0 auto;}
+.hd-deadline{margin-top:16px;position:relative;background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.4);border-radius:8px;display:inline-block;padding:6px 20px;font-size:13px;color:#fca5a5;font-weight:700;}
+.steps{display:flex;justify-content:center;align-items:center;padding:24px 20px 0;max-width:500px;margin:0 auto;}
 .step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;position:relative;}
-.step:not(:last-child)::after{
-  content:'';position:absolute;top:14px;left:calc(50% + 14px);right:calc(-50% + 14px);
-  height:2px;background:var(--border);z-index:0;
-}
+.step:not(:last-child)::after{content:'';position:absolute;top:14px;left:calc(50% + 14px);right:calc(-50% + 14px);height:2px;background:var(--border);z-index:0;}
 .step.active:not(:last-child)::after{background:var(--gold);}
-.step-num{
-  width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:700;background:#fff;border:2px solid var(--border);color:var(--text-muted);
-  position:relative;z-index:1;transition:all .3s;
-}
+.step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;background:#fff;border:2px solid var(--border);color:var(--text-muted);position:relative;z-index:1;transition:all .3s;}
 .step.active .step-num{background:var(--gold);border-color:var(--gold);color:#fff;}
 .step.done .step-num{background:var(--success);border-color:var(--success);color:#fff;}
 .step-label{font-size:11px;color:var(--text-muted);font-weight:500;}
 .step.active .step-label{color:var(--gold);font-weight:700;}
-
-/* ── コンテナ・カード ── */
 .container{max-width:800px;margin:0 auto;padding:24px 16px 60px;}
 .card{background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(13,27,62,.08);margin-bottom:20px;overflow:hidden;}
-.card-title{
-  padding:16px 20px;display:flex;align-items:center;gap:10px;
-  font-family:'Noto Serif JP',serif;font-weight:700;font-size:15px;
-  border-left:4px solid var(--gold);
-}
+.card-title{padding:16px 20px;display:flex;align-items:center;gap:10px;font-family:'Noto Serif JP',serif;font-weight:700;font-size:15px;border-left:4px solid var(--gold);}
 .card-title i{color:var(--gold);font-size:16px;}
 .card-body{padding:20px;}
-
-/* ── セクション見出し ── */
-.sec-head{
-  display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:8px;
-  background:linear-gradient(90deg,var(--navy),var(--accent));color:#fff;
-  font-weight:700;font-size:13px;margin-bottom:16px;
-}
+.sec-head{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:8px;background:linear-gradient(90deg,var(--navy),var(--accent));color:#fff;font-weight:700;font-size:13px;margin-bottom:16px;}
 .sec-head i{color:var(--gold-light);}
-
-/* ── グリッドレイアウト ── */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media(max-width:580px){.grid2{grid-template-columns:1fr;}}
-
-/* ── フォームグループ ── */
 .form-group{margin-bottom:16px;}
 .form-group label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;}
 .req{color:var(--error);margin-left:4px;}
-input[type=text],input[type=email],input[type=tel]{
-  width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;
-  font-size:14px;font-family:'Noto Sans JP',sans-serif;outline:none;transition:border .2s;background:#f9fafb;
-}
+input[type=text],input[type=email],input[type=tel]{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;font-family:'Noto Sans JP',sans-serif;outline:none;transition:border .2s;background:#f9fafb;}
 input:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(201,168,76,.12);}
 input.err{border-color:var(--error)!important;}
 .err-msg{color:var(--error);font-size:11px;margin-top:4px;display:none;}
 .err-msg.show{display:block;}
-
-/* ── 登録番号 ── */
 .reg-wrap{display:flex;align-items:center;gap:6px;}
 .reg-sep{font-size:20px;font-weight:700;color:var(--gold);flex-shrink:0;line-height:1;}
-.reg-input{
-  background:#f9fafb;border:1.5px solid var(--border);border-radius:8px;
-  font-size:16px;font-weight:700;padding:9px 12px;text-align:center;outline:none;transition:border .2s;
-}
+.reg-input{background:#f9fafb;border:1.5px solid var(--border);border-radius:8px;font-size:16px;font-weight:700;padding:9px 12px;text-align:center;outline:none;transition:border .2s;}
 .reg-input:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(201,168,76,.12);}
 .reg-input::placeholder{color:#c8cdd8;opacity:1;}
 .reg-input.err{border-color:var(--error)!important;}
-
-/* ── 郵便番号 ── */
 .zip-row{display:flex;gap:8px;align-items:flex-start;}
-.zip-row input{max-width:220px;}
-.btn-zip{
-  flex-shrink:0;padding:10px 14px;border-radius:8px;border:none;cursor:pointer;font-size:12px;font-weight:700;
-  background:var(--navy);color:#fff;white-space:nowrap;transition:background .2s;
-}
+.btn-zip{flex-shrink:0;padding:10px 14px;border-radius:8px;border:none;cursor:pointer;font-size:12px;font-weight:700;background:var(--navy);color:#fff;white-space:nowrap;transition:background .2s;}
 .btn-zip:hover{background:var(--accent);}
-.addr-auto{
-  width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;
-  font-size:14px;font-family:'Noto Sans JP',sans-serif;outline:none;background:#f0f2f8;
-  color:var(--text);cursor:default;
-}
-
-/* ── 競技区分 ── */
+.addr-auto{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;font-family:'Noto Sans JP',sans-serif;outline:none;background:#f0f2f8;color:var(--text);cursor:default;}
 .events-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
-.ev-card{
-  border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;
-  transition:all .2s;background:#f9fafb;user-select:none;
-  display:flex;align-items:center;gap:14px;
-}
+.ev-card{border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;transition:all .2s;background:#f9fafb;user-select:none;display:flex;align-items:center;gap:14px;}
 .ev-card:hover{border-color:var(--gold);background:rgba(201,168,76,.04);}
 .ev-card.selected{border-color:var(--gold);background:rgba(201,168,76,.08);box-shadow:0 0 0 3px rgba(201,168,76,.12);}
-.ev-checkbox{
-  width:20px;height:20px;border-radius:5px;border:2px solid var(--border);
-  background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  transition:all .2s;
-}
+.ev-checkbox{width:20px;height:20px;border-radius:5px;border:2px solid var(--border);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .ev-card.selected .ev-checkbox{background:var(--gold);border-color:var(--gold);}
 .ev-checkbox::after{content:'✓';font-size:12px;font-weight:700;color:#fff;display:none;}
 .ev-card.selected .ev-checkbox::after{display:block;}
-.ev-no{
-  font-size:15px;font-weight:900;color:var(--navy);flex-shrink:0;
-  font-family:'Noto Serif JP',serif;min-width:36px;
-}
+.ev-no{font-size:15px;font-weight:900;color:var(--navy);flex-shrink:0;font-family:'Noto Serif JP',serif;min-width:48px;}
 .ev-card.selected .ev-no{color:var(--gold);}
 .ev-sep{color:var(--border);font-size:18px;flex-shrink:0;}
 .ev-card.selected .ev-sep{color:var(--gold);}
@@ -154,48 +78,22 @@ input.err{border-color:var(--error)!important;}
 .ev-name{font-size:13px;font-weight:700;color:var(--text);}
 .ev-grade{font-size:11px;color:var(--text-muted);margin-top:2px;}
 .ev-price{font-size:12px;color:var(--gold);font-weight:700;flex-shrink:0;}
-
-/* ── 合計ボックス ── */
-.total-box{
-  background:linear-gradient(135deg,var(--deep-blue),var(--navy));border-radius:12px;
-  padding:16px 20px;display:flex;justify-content:space-between;align-items:center;
-  color:#fff;margin-bottom:16px;
-}
+.total-box{background:linear-gradient(135deg,var(--deep-blue),var(--navy));border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;color:#fff;margin-bottom:16px;}
 .total-label{font-size:13px;font-weight:700;opacity:.8;}
 .total-amount{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gold-light);}
-
-/* ── 振込先 ── */
-.furikomi-box{
-  background:#f8f9ff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:16px;
-  font-size:12px;line-height:1.8;color:var(--text);
-}
+.furikomi-box{background:#f8f9ff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:16px;font-size:12px;line-height:1.8;color:var(--text);}
 .furikomi-box strong{color:var(--navy);}
-
-/* ── 注意事項 ── */
 .notice{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:14px 16px;font-size:12px;line-height:1.9;color:#78350f;margin-bottom:20px;}
 .notice-title{font-weight:700;font-size:13px;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
-
-/* ── ボタン ── */
-.btn-primary{
-  width:100%;padding:14px;border:none;border-radius:10px;cursor:pointer;
-  background:linear-gradient(135deg,var(--gold),#a07830);color:#fff;
-  font-size:16px;font-weight:700;font-family:'Noto Sans JP',sans-serif;
-  transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;
-}
+.btn-primary{width:100%;padding:14px;border:none;border-radius:10px;cursor:pointer;background:linear-gradient(135deg,var(--gold),#a07830);color:#fff;font-size:16px;font-weight:700;font-family:'Noto Sans JP',sans-serif;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
 .btn-primary:hover{opacity:.9;}
 .btn-primary:disabled{opacity:.5;cursor:not-allowed;}
-.btn-secondary{
-  padding:12px 24px;border:2px solid var(--border);border-radius:10px;cursor:pointer;
-  background:#fff;color:var(--text-muted);font-size:14px;font-weight:700;font-family:'Noto Sans JP',sans-serif;
-  transition:all .2s;
-}
+.btn-secondary{padding:12px 24px;border:2px solid var(--border);border-radius:10px;cursor:pointer;background:#fff;color:var(--text-muted);font-size:14px;font-weight:700;font-family:'Noto Sans JP',sans-serif;transition:all .2s;}
 .btn-secondary:hover{border-color:var(--navy);color:var(--navy);}
-
-/* ── 確認画面 ── */
 #confirmView{display:none;}
 .confirm-card{background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(13,27,62,.08);overflow:hidden;margin-bottom:20px;}
 .confirm-head{background:linear-gradient(135deg,var(--deep-blue),var(--navy));color:#fff;padding:16px 20px;font-weight:700;font-size:15px;}
-.confirm-row{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:12px 20px;border-bottom:1px solid #f0f2f8;}
+.confirm-row{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:12px 20px;border-bottom:1px solid #f0f2f8;}
 .confirm-row:last-child{border-bottom:none;}
 .ck{font-size:12px;font-weight:700;color:var(--text-muted);}
 .cv{font-size:13px;font-weight:500;color:var(--text);}
@@ -203,15 +101,11 @@ input.err{border-color:var(--error)!important;}
 .tag{display:inline-block;background:rgba(201,168,76,.12);border:1px solid var(--gold);color:var(--navy);font-size:11px;font-weight:700;border-radius:20px;padding:2px 10px;}
 .btn-row{display:flex;gap:12px;}
 .btn-row .btn-primary{flex:1;}
-
-/* ── 完了画面 ── */
 #completeView{display:none;text-align:center;padding:40px 20px;}
 .complete-icon{font-size:56px;color:var(--success);margin-bottom:16px;}
 .complete-title{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:8px;}
 .complete-sub{font-size:14px;color:var(--text-muted);line-height:1.7;}
 .complete-info{background:#f8f9ff;border-radius:10px;padding:16px 20px;margin-top:24px;font-size:12px;line-height:1.9;text-align:left;}
-
-/* ── スピナー ── */
 .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 </style>
@@ -235,7 +129,7 @@ input.err{border-color:var(--error)!important;}
     <div class="step" id="step3"><div class="step-num">3</div><div class="step-label">完了</div></div>
   </div>
 
-  <!-- ===== 入力画面 ===== -->
+  <!-- 入力画面 -->
   <div id="formView">
     <div class="notice" style="margin-top:20px;">
       <div class="notice-title"><i class="fas fa-info-circle"></i> 申込にあたってのご案内</div>
@@ -360,12 +254,10 @@ input.err{border-color:var(--error)!important;}
           <div class="events-grid" id="latinGrid"></div>
         </div>
         <div class="err-msg" id="events-err" style="margin-bottom:12px;">1つ以上の競技区分を選択してください</div>
-
         <div class="total-box">
           <div class="total-label"><i class="fas fa-yen-sign"></i> 合計出場料</div>
           <div class="total-amount" id="totalAmt">¥ 0</div>
         </div>
-
         <div class="furikomi-box">
           <strong>振込先</strong><br>
           郵便振替口座：JDC中部総局 競技部　口座番号 <strong>00830-5-88490</strong><br>
@@ -391,15 +283,15 @@ input.err{border-color:var(--error)!important;}
     </button>
   </div>
 
-  <!-- ===== 確認画面 ===== -->
+  <!-- 確認画面 -->
   <div id="confirmView">
     <div class="confirm-card" style="margin-top:20px;">
       <div class="confirm-head"><i class="fas fa-check-circle"></i> 申込内容の確認</div>
       <div class="confirm-row"><span class="ck">リーダー登録番号</span><span class="cv" id="cf-regLeader"></span></div>
       <div class="confirm-row"><span class="ck">リーダー氏名</span><span class="cv" id="cf-leader"></span></div>
+      <div class="confirm-row"><span class="ck">リーダー所属教室</span><span class="cv" id="cf-leaderSchool"></span></div>
       <div class="confirm-row"><span class="ck">パートナー登録番号</span><span class="cv" id="cf-regPartner"></span></div>
       <div class="confirm-row"><span class="ck">パートナー氏名</span><span class="cv" id="cf-partner"></span></div>
-      <div class="confirm-row"><span class="ck">リーダー所属教室</span><span class="cv" id="cf-leaderSchool"></span></div>
       <div class="confirm-row"><span class="ck">パートナー所属教室</span><span class="cv" id="cf-partnerSchool"></span></div>
       <div class="confirm-row"><span class="ck">住所</span><span class="cv" id="cf-addr"></span></div>
       <div class="confirm-row"><span class="ck">電話番号</span><span class="cv" id="cf-phone"></span></div>
@@ -415,7 +307,7 @@ input.err{border-color:var(--error)!important;}
     </div>
   </div>
 
-  <!-- ===== 完了画面 ===== -->
+  <!-- 完了画面 -->
   <div id="completeView">
     <div class="complete-icon"><i class="fas fa-check-circle"></i></div>
     <div class="complete-title">申込が完了しました</div>
@@ -440,7 +332,6 @@ emailjs.init('3A228NVyE5NVMxev8');
 const EVENT_DATE = '令和8年6月14日（日）';
 const GAS_URL    = 'https://script.google.com/macros/s/AKfycbygAVM_Dhc4DkL0QnP6obLnczi9LTL8wBuPPL2g_ZCcqVgVxUGlwUim8Lw1u8Rh6lAl/exec';
 
-// 競技データ（プロ）
 const proData = {
   ballroom: [
     { id:'P1', no:1, grade:'オープン選手権',    name:'WTVFQ 5種目総合',    price:5000 },
@@ -455,16 +346,11 @@ const proData = {
 const allEvents = proData.ballroom.concat(proData.latin);
 const selectedEvents = {};
 
-// 競技カードを生成
 function renderEvents() {
   renderGrid('ballroomGrid', proData.ballroom);
   var latinSec = document.getElementById('latinSection');
-  if (proData.latin.length) {
-    renderGrid('latinGrid', proData.latin);
-    if (latinSec) latinSec.style.display = '';
-  } else {
-    if (latinSec) latinSec.style.display = 'none';
-  }
+  if (proData.latin.length) { renderGrid('latinGrid', proData.latin); latinSec.style.display = ''; }
+  else { latinSec.style.display = 'none'; }
 }
 function renderGrid(gridId, items) {
   var grid = document.getElementById(gridId);
@@ -479,23 +365,15 @@ function renderGrid(gridId, items) {
       '<div class="ev-checkbox"></div>' +
       '<div class="ev-no">【' + ev.no + '】</div>' +
       '<div class="ev-sep">ー</div>' +
-      '<div class="ev-info">' +
-        '<div class="ev-name">' + ev.name + '</div>' +
-        '<div class="ev-grade">' + ev.grade + '</div>' +
-      '</div>' +
+      '<div class="ev-info"><div class="ev-name">' + ev.name + '</div><div class="ev-grade">' + ev.grade + '</div></div>' +
       '<div class="ev-price">¥' + ev.price.toLocaleString() + '</div>';
     grid.appendChild(div);
   });
 }
 function toggleEvent(id) {
   var card = document.getElementById('ev-' + id);
-  if (selectedEvents[id]) {
-    delete selectedEvents[id];
-    card.classList.remove('selected');
-  } else {
-    selectedEvents[id] = true;
-    card.classList.add('selected');
-  }
+  if (selectedEvents[id]) { delete selectedEvents[id]; card.classList.remove('selected'); }
+  else { selectedEvents[id] = true; card.classList.add('selected'); }
   updateTotal();
 }
 function updateTotal() {
@@ -508,13 +386,11 @@ function updateTotal() {
   return total;
 }
 
-// ── 登録番号 ──
 function handleRegInput(el, nextId) {
   el.value = el.value
     .replace(/[０-９]/g, function(s) { return String.fromCharCode(s.charCodeAt(0) - 0xFEE0); })
     .replace(/[^0-9]/g, '');
-  if (nextId && el.value.length === parseInt(el.maxLength))
-    document.getElementById(nextId).focus();
+  if (nextId && el.value.length === parseInt(el.maxLength)) document.getElementById(nextId).focus();
 }
 function getRegNo(p1Id, p2Id) {
   var p1 = document.getElementById(p1Id).value.trim();
@@ -524,7 +400,6 @@ function getRegNo(p1Id, p2Id) {
   return (p1 || '') + (p2 || '');
 }
 
-// ── 住所検索（3段階フォールバック）──
 async function searchZip() {
   var zip = document.getElementById('zip').value.replace(/[^0-9]/g, '');
   if (zip.length !== 7) { showErr('zip-err', true); return; }
@@ -569,7 +444,6 @@ async function searchZip() {
   alert('自動検索ができませんでした。\n都道府県・市区町村を直接入力してください。');
 }
 
-// ── バリデーション ──
 function showErr(id, show) {
   var el = document.getElementById(id);
   if (!el) return;
@@ -583,7 +457,6 @@ function validate() {
     var v = document.getElementById(id).value.trim();
     var bad = !v; showErr(id + '-err', bad); if (bad) ok = false;
   }
-  // 登録番号チェック（1桁＋3桁 両方必須）
   function checkReg(p1Id, p2Id, errId) {
     var p1 = document.getElementById(p1Id).value.trim();
     var p2 = document.getElementById(p2Id).value.trim();
@@ -608,32 +481,31 @@ function validate() {
   return ok;
 }
 
-// ── 確認画面へ ──
 function goToConfirm() {
   if (!validate()) { window.scrollTo({top:0,behavior:'smooth'}); return; }
-  var regLeader  = getRegNo('regLeaderP1','regLeaderP2');
-  var regPartner = getRegNo('regPartnerP1','regPartnerP2');
+  var regLeader    = getRegNo('regLeaderP1','regLeaderP2');
+  var regPartner   = getRegNo('regPartnerP1','regPartnerP2');
   var leaderKanji  = document.getElementById('leaderKanji').value.trim();
   var leaderKana   = document.getElementById('leaderKana').value.trim();
   var partnerKanji = document.getElementById('partnerKanji').value.trim();
   var partnerKana  = document.getElementById('partnerKana').value.trim();
-  var pref = document.getElementById('pref').value.trim();
-  var city = document.getElementById('city').value.trim();
-  var addr2= document.getElementById('addr2').value.trim();
-  document.getElementById('cf-regLeader').textContent  = regLeader;
-  document.getElementById('cf-regPartner').textContent = regPartner;
-  document.getElementById('cf-leader').textContent  = leaderKanji + '（' + leaderKana + '）';
-  document.getElementById('cf-partner').textContent = partnerKanji + '（' + partnerKana + '）';
+  var pref  = document.getElementById('pref').value.trim();
+  var city  = document.getElementById('city').value.trim();
+  var addr2 = document.getElementById('addr2').value.trim();
+  document.getElementById('cf-regLeader').textContent     = regLeader;
+  document.getElementById('cf-leader').textContent        = leaderKanji + '（' + leaderKana + '）';
   document.getElementById('cf-leaderSchool').textContent  = document.getElementById('leaderSchool').value.trim() || '—';
+  document.getElementById('cf-regPartner').textContent    = regPartner;
+  document.getElementById('cf-partner').textContent       = partnerKanji + '（' + partnerKana + '）';
   document.getElementById('cf-partnerSchool').textContent = document.getElementById('partnerSchool').value.trim() || '—';
-  document.getElementById('cf-addr').textContent    = pref + city + addr2;
-  document.getElementById('cf-phone').textContent   = document.getElementById('phone').value.trim();
-  document.getElementById('cf-email').textContent   = document.getElementById('email').value.trim();
+  document.getElementById('cf-addr').textContent          = pref + city + addr2;
+  document.getElementById('cf-phone').textContent         = document.getElementById('phone').value.trim();
+  document.getElementById('cf-email').textContent         = document.getElementById('email').value.trim();
   var total = updateTotal();
   document.getElementById('cf-total').textContent = '¥' + total.toLocaleString();
   var tagsHtml = Object.keys(selectedEvents).map(function(id) {
     var ev = allEvents.find(function(e) { return e.id === id; });
-    return ev ? '<span class="tag">No.' + ev.no + ' ' + ev.name + '</span>' : '';
+    return ev ? '<span class="tag">【No.' + ev.no + '】' + ev.name + '</span>' : '';
   }).join('');
   document.getElementById('cf-events').innerHTML = '<div class="tags-wrap">' + tagsHtml + '</div>';
   document.getElementById('formView').style.display    = 'none';
@@ -652,29 +524,28 @@ function goBack() {
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── 送信 ──
 async function submitForm() {
   var btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> 送信中...';
-  var regLeader  = getRegNo('regLeaderP1','regLeaderP2');
-  var regPartner = getRegNo('regPartnerP1','regPartnerP2');
+  var regLeader    = getRegNo('regLeaderP1','regLeaderP2');
+  var regPartner   = getRegNo('regPartnerP1','regPartnerP2');
   var leaderKanji  = document.getElementById('leaderKanji').value.trim();
   var leaderKana   = document.getElementById('leaderKana').value.trim();
   var partnerKanji = document.getElementById('partnerKanji').value.trim();
   var partnerKana  = document.getElementById('partnerKana').value.trim();
   var leaderSchool  = document.getElementById('leaderSchool').value.trim() || '未記入';
   var partnerSchool = document.getElementById('partnerSchool').value.trim() || '未記入';
-  var emailVal= document.getElementById('email').value.trim();
-  var pref = document.getElementById('pref').value.trim();
-  var city = document.getElementById('city').value.trim();
-  var addr2= document.getElementById('addr2').value.trim();
+  var emailVal = document.getElementById('email').value.trim();
+  var pref  = document.getElementById('pref').value.trim();
+  var city  = document.getElementById('city').value.trim();
+  var addr2 = document.getElementById('addr2').value.trim();
   var addrVal = pref + city + addr2;
   var phone = document.getElementById('phone').value.trim();
   var total = updateTotal();
   var selEvList = Object.keys(selectedEvents).map(function(id) {
     var ev = allEvents.find(function(e) { return e.id === id; });
-    return ev ? 'No.' + ev.no + ' ' + ev.name : '';
+    return ev ? '【No.' + ev.no + '】' + ev.name : '';
   });
   var messageBody =
     '【大会開催日】' + EVENT_DATE + '\n' +
@@ -690,6 +561,7 @@ async function submitForm() {
     '出場競技：\n' + selEvList.join('\n') + '\n' +
     '合計：¥' + total.toLocaleString();
   var params = {
+    to_email:  'jdc.chubu@gmail.com',
     to_name:   leaderKanji + ' / ' + partnerKanji,
     from_name: '2026 前期中部日本ダンス選手権 申込受付',
     message:   messageBody,
@@ -697,29 +569,33 @@ async function submitForm() {
     cc_email:  emailVal,
   };
   var gasPayload = {
-    regLeader:   regLeader,
-    regPartner:  regPartner,
-    leaderKanji: leaderKanji,
-    leaderKana:  leaderKana,
-    partnerKanji:partnerKanji,
-    partnerKana: partnerKana,
+    regLeader:    regLeader,
+    regPartner:   regPartner,
+    leaderKanji:  leaderKanji,
+    leaderKana:   leaderKana,
+    partnerKanji: partnerKanji,
+    partnerKana:  partnerKana,
     leaderSchool:  leaderSchool,
     partnerSchool: partnerSchool,
-    address:     addrVal,
-    phone:       "'" + phone,
-    events:      selEvList.join(' / '),
-    totalFee:    '¥' + total.toLocaleString(),
-    email:       emailVal,
+    address:      addrVal,
+    phone:        "'" + phone,
+    events:       selEvList.join(' / '),
+    totalFee:     '¥' + total.toLocaleString(),
+    email:        emailVal,
   };
+
+  // GASはfire-and-forget（レスポンス不要）
   try {
-    await Promise.allSettled([
-      emailjs.send('service_guqkzna', 'template_yjehnbv', params),
-      fetch(GAS_URL, {
-        method: 'POST', mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(gasPayload),
-      }),
-    ]);
+    fetch(GAS_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(gasPayload),
+    });
+  } catch(_) {}
+
+  // EmailJSはawaitで確実に待つ
+  try {
+    await emailjs.send('service_guqkzna', 'template_yjehnbv', params);
     document.getElementById('confirmView').style.display = 'none';
     document.getElementById('completeView').style.display = 'block';
     document.getElementById('step2').classList.remove('active');
@@ -727,7 +603,7 @@ async function submitForm() {
     document.getElementById('step3').classList.add('active');
     window.scrollTo({top:0,behavior:'smooth'});
   } catch(err) {
-    alert('送信中にエラーが発生しました。\n時間をおいて再度お試しください。\n\nエラー：' + err.message);
+    alert('メール送信に失敗しました。\n電波の良い場所で再度お試しください。\n\nエラー：' + (err.text || err.message || JSON.stringify(err)));
     btn.disabled = false;
     btn.innerHTML = '<i class="fas fa-paper-plane"></i> この内容で申し込む';
   }
