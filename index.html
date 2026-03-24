@@ -141,11 +141,10 @@ header::before {
 .btn-zip:hover { opacity: .88; }
 
 /* 住所行 */
-.addr-row { display: flex; gap: 10px; flex-wrap: wrap; }
-.addr-row .form-group:nth-child(1) { max-width: 33%; min-width: 100px; flex: 1; }
-.addr-row .form-group:nth-child(2) { max-width: 50%; min-width: 140px; flex: 2; }
-.addr-row .form-group:nth-child(3) { max-width: 33%; min-width: 100px; flex: 1; }
-@media(max-width:540px) { .addr-row { flex-direction: column; } .addr-row .form-group { max-width: 100% !important; flex: unset !important; } }
+.addr-row { display: flex; gap: 10px; }
+.addr-row .form-group:nth-child(1) { flex: 1; min-width: 100px; }
+.addr-row .form-group:nth-child(2) { flex: 2; min-width: 140px; }
+@media(max-width:540px) { .addr-row { flex-direction: column; } }
 
 /* 電話・メール幅制限 */
 #phone { max-width: 260px; }
@@ -400,10 +399,10 @@ input[readonly] { background: #f0f2f7; color: var(--text-muted); cursor: default
             <label>市区町村</label>
             <input type="text" id="city" placeholder="自動入力" readonly>
           </div>
-          <div class="form-group">
-            <label>番地・建物名</label>
-            <input type="text" id="street" placeholder="例：鶴舞1-1-3">
-          </div>
+        </div>
+        <div class="form-group">
+          <label>番地・建物名</label>
+          <input type="text" id="street" placeholder="例：鶴舞1-1-3">
         </div>
         <div class="form-group">
           <label>電話番号<span class="req">*</span></label>
